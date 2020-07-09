@@ -14,6 +14,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -23,6 +28,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
+
+import org.json.JSONObject;
 
 public class MainActivity extends Activity {
 
@@ -157,6 +164,8 @@ public class MainActivity extends Activity {
                 (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
         mBluetoothAdapter = bluetoothManager.getAdapter();
 
+        //new PostDistance().execute();
+
         // Checks if Bluetooth is supported on the device.
         if (mBluetoothAdapter == null) {
             Toast.makeText(this, "BLE Not Supported", Toast.LENGTH_SHORT).show();
@@ -203,6 +212,8 @@ public class MainActivity extends Activity {
         scanLeDevice(false);
         //bleAdapter.clear();
     }
+
+
 
     public void scanLeDevice(final boolean enable) {
         if (enable) {

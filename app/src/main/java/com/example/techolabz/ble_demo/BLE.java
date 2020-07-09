@@ -15,6 +15,7 @@ public class BLE {
     String instanceid;
     String url;
     String rawData;
+    String distance;
 
     public String getRawData() {
         return rawData;
@@ -95,6 +96,11 @@ public class BLE {
     public void setRssi(String rssi) {
         this.rssi = rssi;
     }
-
+    public String getDistanceInMeters(){
+        return distance;
+    }
+    public void setDistanceInMeters(String distance) {
+        this.distance = distance;
+    }
 
 }
