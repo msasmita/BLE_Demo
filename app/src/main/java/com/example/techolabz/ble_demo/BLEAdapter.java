@@ -75,7 +75,8 @@ public class BLEAdapter extends ArrayAdapter<BLE> {
         BLE ble = bleArrayList.get(position);
 
             JSONObject postData = new JSONObject();
-            if (ble.getDeviceAddress() == "00:A0:50:5E:E2:1A" || ble.getDeviceAddress() == "00:A0:50:4D:37:4D" || ble.getDeviceAddress() == "00:A0:50:4D:36:5B") {
+            String deviceAdd = ble.getDeviceAddress();
+            if (deviceAdd.contains("00:A0:50:5E:E2:1A") || deviceAdd.contains ("00:A0:50:4D:37:4D") || deviceAdd.contains("00:A0:50:4D:36:5B")) {
 
                 holder.txtAdddress.setText("Address : " + ble.getDeviceAddress());
                 holder.txtuuid.setText("Uuid : " + ble.getUuid());
