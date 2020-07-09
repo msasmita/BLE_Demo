@@ -10,6 +10,10 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 
@@ -60,6 +64,7 @@ public class BLEAdapter extends ArrayAdapter<BLE> {
             holder.txtinstanceid = (TextView) convertView.findViewById(R.id.txtinstanceid);
             holder.txturl = (TextView) convertView.findViewById(R.id.txturl);
             holder.txtrawdata = (TextView) convertView.findViewById(R.id.txtrawdata);
+
 
             convertView.setTag(holder);
         } else {
@@ -142,15 +147,40 @@ public class BLEAdapter extends ArrayAdapter<BLE> {
                    }else if(ble.getDeviceAddress() == "00:A0:50:4D:36:5B"){
                        postData.put("5B", calculateDistance(ble.getRssi()));
                    }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
                 return convertView;
             }else {
+                try{
+                    postData.put("1A", "10");
+                    postData.put("4D", "10");
+                    postData.put("5B", "10");
+                    System.out.println("HHHHHHHHHHH "+postData.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+//                try {
+//                URL urlForGetRequest = null;
+//                urlForGetRequest = new URL("https://jsonplaceholder.typicode.com/posts/1");
+//                                HttpURLConnection postConnection = (HttpURLConnection) urlForGetRequest.openConnection();
+//                postConnection.setRequestMethod("POST"));
+//                postConnection.setRequestProperty("userId", "a1bcdefgh");
+//                postConnection.setRequestProperty("Content-Type", "application/json");
+//                postConnection.setDoOutput(true);
+//                OutputStream os = postConnection.getOutputStream();
+//                os.write(postData.toString().getBytes());
+//                os.flush();
+//                os.close();
+//                } catch (MalformedURLException e) {
+//                    e.printStackTrace();
+//                }
                 return convertView;
+
             }
+
+
         }
 
         //return convertView;
