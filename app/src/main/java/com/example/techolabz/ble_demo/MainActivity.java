@@ -18,6 +18,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.widget.EditText;
+
 public class MainActivity extends Activity {
 
     private BluetoothAdapter mBluetoothAdapter;
@@ -50,11 +56,36 @@ public class MainActivity extends Activity {
     private ArrayList<Byte> subUrlarrayList;
     private ArrayList<Byte> urlarrayList;
     private ArrayList<Byte> suffUrlarrayList;
+    Button b1;
+    EditText ed1;
+
+    private WebView wv1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        b1=(Button)findViewById(R.id.button);
+        ed1=(EditText)findViewById(R.id.editText);
+
+        wv1=(WebView)findViewById(R.id.webView);
+        wv1.setWebViewClient(new MyBrowser());
+        //wv1.loadUrl("http://www.requestwall.com");
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //String url = ed1.getText().toString();
+                String url ="http://www.requestwall.com";
+                wv1.getSettings().setLoadsImagesAutomatically(true);
+                wv1.getSettings().setJavaScriptEnabled(true);
+                wv1.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+                wv1.loadUrl(url);
+            }
+        });
+       // setContentView(R.layout.activity_main);
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             // Android M Permission checkU+2028
@@ -818,5 +849,14 @@ public class MainActivity extends Activity {
             hexChars[j * 2 + 1] = hexArray[v & 0x0F];
         }
         return new String(hexChars);
+    }
+
+
+    private class MyBrowser extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
     }
 }
