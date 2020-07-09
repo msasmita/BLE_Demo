@@ -81,12 +81,12 @@ public class BLEAdapter extends ArrayAdapter<BLE> {
                 holder.txtuuid.setText("Uuid : " + ble.getUuid());
                 holder.txtmajor.setText("Major : " + ble.getMajor());
                 holder.txtminor.setText("Minor : " + ble.getMinor());
-                holder.txtrssi.setText("Distannce in Meters: " + calculateDistance(ble.getRssi()) + "  " + ble.getDistanceInMeters());
+                holder.txtrssi.setText("Distannce in Meters: " + calculateDistance(ble.getRssi()) );
 
                 holder.txtnamespaceid.setText("NamespaceId : " + ble.getNamespaceid());
                 holder.txtinstanceid.setText("InstanceId : " + ble.getInstanceid());
                 holder.txturl.setText("Url : " + ble.getUrl());
-                holder.txtrawdata.setText("Raw Data : " + ble.getRawData());
+                //holder.txtrawdata.setText("Raw Data : " + ble.getRawData());
 
                 // System.out.println("HEYYY:: "+ble.getDeviceName()+"   "+ ble.getDistanceInMeters());
 
@@ -130,11 +130,11 @@ public class BLEAdapter extends ArrayAdapter<BLE> {
 
 
                 if (ble.getRawData() == null) {
-                    holder.txtrawdata.setVisibility(View.GONE);
+                   // holder.txtrawdata.setVisibility(View.GONE);
 
 
                 } else {
-                    holder.txtrawdata.setVisibility(View.VISIBLE);
+                  //  holder.txtrawdata.setVisibility(View.VISIBLE);
                     holder.txtName.setText("Name : " + ble.getDeviceName() + " (Raw Data)");
                 }
 
