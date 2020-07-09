@@ -1,0 +1,4 @@
+#Thu Jul 09 14:57:03 IST 2020
+base.0=C\:\\Users\\sasmahar\\AndroidStudioProjects\\New folder\\List Beacons with Android Project\\List Beacons with Android Project\\BLE_Demo\\app\\build\\intermediates\\dex\\debug\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
